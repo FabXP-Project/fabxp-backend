@@ -1,0 +1,56 @@
+User
+ │
+ ├── Destination
+ ├── Dates
+ ├── Trip type
+ ├── Adventure level
+ ├── Budget
+ └── Preferences
+        │
+        ▼
+┌───────────────────────┐
+│  MMT / Travel APIs    │
+└──────────┬────────────┘
+           │
+           ▼
+   Location information
+           │
+           ▼
+┌───────────────────────┐
+│      Vector DB        │
+│                       │
+│ embeddings of places  │
+└──────────┬────────────┘
+           │
+           │ RAG retrieval
+           ▼
+┌───────────────────────┐
+│ Candidate Locations   │
+│ e.g. 50-100 places    │
+└──────────┬────────────┘
+           │
+           ▼
+   ┌─────────────────┐
+   │ Filtering Layer │
+   └────────┬────────┘
+            │
+     remove unsuitable
+            │
+            ▼
+   ┌─────────────────┐
+   │ Scoring Layer   │
+   └────────┬────────┘
+            │
+            ▼
+   ┌─────────────────┐
+   │ Ranking Model   │
+   └────────┬────────┘
+            │
+            ▼
+      Top 5 / Top 10
+            │
+            ▼
+       LLM / Agent
+            │
+            ▼
+   Personalized explanation
